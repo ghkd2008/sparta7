@@ -194,8 +194,9 @@
         <input
           type="text"
           class="form-control"
-          id="exampleFormControlInput1"
+          id="inputname"
           placeholder="성함을 입력하세요"
+          value="예)홍길동"
         />
       </div>
 
@@ -210,7 +211,7 @@
       </div>
 
       <div class="form-group">
-        <label for="exampleFormControlInput1">주소</label>
+        <label for="exampleFormControlInput1">이메일주소</label>
         <input
           type="text"
           class="form-control"
@@ -222,7 +223,7 @@
       <div class="form-group">
         <label for="exampleFormControlInput1">전화번호</label>
         <input
-          type="text"
+          type="number"
           class="form-control"
           id="phonenumber"
           placeholder="전화번호를 입력하세요 (-없이)"
@@ -230,8 +231,10 @@
         />
       </div>
 
-      <div class= "submitButton">
-        <button type="button" class="btn btn-primary">주문하기</button>
+      <div class="submitButton">
+        <button type="button" class="btn btn-primary" onclick="on_order()">
+          주문하기
+        </button>
       </div>
     </form>
 
@@ -252,5 +255,37 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      function on_order() {
+        let name = $("#inputname").val();
+
+        if (name == "") {
+          alert("이름을 입력하세요");
+          return
+
+
+        }
+
+        let count = $("#count").val();
+        if (count < 1) {
+          alert("수량을 선택하세요");
+          return
+
+        }
+        let address = $("#address").val();
+        if (address == "") {
+          alert("주소를 입력하세요");
+          return
+        }
+
+        let phonenumber = $("#phonenumber").val();
+        if (phonenumber == "") {
+          alert("전화번호를 입력하세요");
+          return
+        }
+
+      }
+    </script>
   </body>
 </html>

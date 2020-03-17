@@ -1,0 +1,97 @@
+//JS 설명
+
+
+주석 // 
+1.변수 : 숫자, 스트링, 불린
+let 변수 = 10
+
+2.명령문
+ex
+let sum = 1+1
+console.log("aaa")
+명령문 -> 그냥 쓰면 수행함.
+함수   ->  ()를 사용.
+ex/ 함수이름(힘수가 수행하는데 필요한 전달 값)
+
+3. 분기문/조건문
+: if (조건) {a하고} else {b하라}
+//ex)
+ if (10>100) {console.log("크다")} else {console.log("작다")}
+ 
+ let age = 25
+ if (age<20) {console.log("미성년자")} else if (age<30 {console.log("청년")}) else {console.log("성인")}
+
+ 4.반복문
+ for (초기조건; 반복조건; 반복할 거) {수행동작}
+
+ 조건문과 반복문의 공통점 -> ()이후 {}
+
+ ex/
+
+ for (i=0; i<10; i=i+1) {console.log("hi")} 결과: hi가 10번찍힘
+ for (i=0; i<10; i=i+1) {console.log(i)} 결과: 0 1 2 3 4 5 6 7 8 9
+
+//////////////////////////////////////////
+데이터타입
+넘버, 스트링, 불린 + Array, map(dictionary)
+
+array와 dictionary!!!
+
+1. array 표현방법
+
+a= [1,2,3,4,5]
+a[0] 결과:1
+a[1] 결과:2
+
+array의 순서는 정해져 있음.
+
+a=['a','b','c']
+a[2] ='c'
+
+
+a=['a',1,'b',2]
+이것도 가능
+a.length
+결과 : 4
+
+a.push('c')
+결과: a라는 array에 'c'가 추가됨.
+
+2.dictionary 표현방법
+
+{key:value}이런식
+
+a= {a:1,b:2,c:3}
+dict는 key값이 중요.
+
+key값으로 불러옴
+
+a["a"]
+결과 :1
+
+a['d'] = 4
+결과 dict에 d:4 추가됨
+
+중첩되는 구조 사용하면 "object"로 표시!!
+예를 들어 딕셔너리 안에 어레이가 있으면 typeof 사용하면 object라고 나옴.
+
+이것들이 바로 javascript object type으로 표현되는 것 ->JSON임
+
+json안에서 인덱스 이용하여 불러오는 걸 잘 해야됨.
+
+
+기본
+alert("hello!")
+undefined
+confirm("ok?")
+false
+///가장 자주 쓰는 형태. 가지구 있자
+function show_gus(index){
+    for (let i = 0; i < mise.length; i++) {
+        if (mise[i]['IDEX_MVL'] < index) {
+            let gu_name = mise[i]['MSRSTE_NM'];
+                let gu_mise = mise[i]['IDEX_MVL'];
+                console.log(gu_name, gu_mise);
+        }
+    }
+}
