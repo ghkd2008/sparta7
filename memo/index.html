@@ -18,7 +18,7 @@
 
     />
 
-    <title>Hello, world!</title>
+    <title>나홀로 메모장</title>
     <style>
         
         
@@ -63,17 +63,17 @@
         snakecase:my_content 주로 자바스크립트에서 사용-->
 
       <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
+        <h1 class="display-4">나홀로 링크 메모장!</h1>
         <p class="lead">
-          This is a simple hero unit, a simple jumbotron-style component for
-          calling extra attention to featured content or information.
+          기사를 입력하고 저장할 수 있어요
         </p>
         <hr class="my-4" />
         
-        <a class="btn btn-primary btn-lg" href="#" role="button">기사 저장</a>
+        <a id = "boxbutton" class="btn btn-primary btn-lg" href="#" role="button" onclick="onOpenBox()">포스팅 박스 열기</a>
       </div>
-      <div class="article_submit">
-        <form>
+
+      <div id ="abox" class="article_submit">
+        <div>
             <div class="form-group">
           <label for="exampleFormControlInput1">아티클 URL</label>
           <input
@@ -94,7 +94,8 @@
             </div>
 
             <button type="button" class="btn btn-primary">기사저장</button>
-      </form>
+      
+    </div>
     </div>
 
       <div class="card-columns">
@@ -105,14 +106,12 @@
             alt="..."
           />
           <div class="card-body">
-            <h5 class="card-title">Card title that wraps to a new line</h5>
+            <h5 class="card-title">카드 제목을 입력하세요</h5>
             <p class="card-text">
-              This is a longer card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+              여기에다가는 내용을 입력하세요
             </p>
             <p>
-                <h5 class ="bluetext">파란색 글씨</h5>
+                <h5 class ="bluetext">파란색 글씨로 내용을 입력하세요</h5>
             </p>
           </div>
         </div>
@@ -211,5 +210,31 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
+
+<script>
+
+  $("#abox").hide();
+
+  let opened = false;
+
+
+  function onOpenBox() {
+    if (opened ==false) {
+    $("#boxbutton").html("포스팅 박스 닫기");
+    $("#abox").show();
+    opened = true;
+    } 
+    else {
+    $("#boxbutton").html("포스팅 박스 열기");
+    $("#abox").hide();
+    opened = false;
+    }
+  }
+  
+  
+
+</script>
+
+
   </body>
 </html>
