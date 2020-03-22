@@ -96,7 +96,7 @@
         margin: 10px auto;
       }
       .submitButton {
-        text-align: right;
+        text-align: center;
       }
     </style>
 
@@ -196,7 +196,7 @@
           class="form-control"
           id="inputname"
           placeholder="성함을 입력하세요"
-          value="예)홍길동"
+          value="홍길동"
         />
       </div>
 
@@ -262,6 +262,7 @@
 
         if (name == "") {
           alert("이름을 입력하세요");
+          $("#inputname").focus();
           return
 
 
@@ -270,18 +271,21 @@
         let count = $("#count").val();
         if (count < 1) {
           alert("수량을 선택하세요");
+          $("#count").focus();
           return
 
         }
         let address = $("#address").val();
         if (address == "") {
           alert("주소를 입력하세요");
+          $("#address").focus();
           return
         }
 
         let phonenumber = $("#phonenumber").val();
         if (phonenumber == "") {
           alert("전화번호를 입력하세요");
+          $("#phonenumber").focus();
           return
         }
 
