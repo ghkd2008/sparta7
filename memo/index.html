@@ -14,9 +14,10 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
-      href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo|Nanum+Pen+Script|Oswald|Roboto+Condensed&display=swap" rel="stylesheet">
-
     />
+
+    <!--구글 폰트 불러옴-->
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
     <title>나홀로 메모장</title>
     <style>
@@ -73,7 +74,7 @@
       </div>
 
       <div id ="abox" class="article_submit">
-        <div>
+        
             <div class="form-group">
           <label for="exampleFormControlInput1">아티클 URL</label>
           <input
@@ -95,7 +96,7 @@
 
             <button type="button" class="btn btn-primary">기사저장</button>
       
-    </div>
+    
     </div>
 
       <div class="card-columns">
@@ -210,26 +211,33 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
+    
 
+
+<!-- 우리가 만드는 script-->
 <script>
+ console.log("안녕!")
 
+$("#abox").hide();
+
+let opened = false;
+
+
+function onOpenBox() {
+  if (opened ==false) {
+  $("#boxbutton").html("포스팅 박스 닫기");
+  $("#abox").show();
+  opened = true;
+  } 
+  
+  else {
+  $("#boxbutton").html("포스팅 박스 열기");
   $("#abox").hide();
-
-  let opened = false;
-
-
-  function onOpenBox() {
-    if (opened ==false) {
-    $("#boxbutton").html("포스팅 박스 닫기");
-    $("#abox").show();
-    opened = true;
-    } 
-    else {
-    $("#boxbutton").html("포스팅 박스 열기");
-    $("#abox").hide();
-    opened = false;
-    }
+  opened = false;
   }
+}
+  
+
   
   
 

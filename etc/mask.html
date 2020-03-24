@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mask</title>
+  </head>
+  <body>
+    <h1>공적마스크 판매 약국들</h1>
+
+    <div id ="buttons">
+      <button class="b" onclick="loadpage(1)">1</button>
+      <button class="b" onclick="loadpage(2)">2</button>
+      <button class="b" onclick="loadpage(3)">3</button>
+    </div>
+
+    <ul id="names">
+      <li>
+        <div class="place">
+          <h1 class="placename">약국이름</h1>
+          <p class="placeaddr">약국주소</p>
+        </div>
+      </li>
+    </ul>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+
+    <!--내가만든 스크립트-->
+    <script>
+      console.log("hello");
+      //즉, 웹 들어가면 hello를 콘솔에 출력.
+      function loadpage(page) {
+      $.ajax({
+        url:
+          "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/stores/json",
+        type: "GET",
+        data: {
+          page: page,
+          perPage: 600
+        },
+        success: function(response) {
+          let size = response.storeInfos.length;
+          $("#names").html("");
+          for (i = 0; i < size; i++) {
+            if (response.storeInfos[i]["type"] == "01") {
+              let name = response.storeInfos[i].name;
+              let addr = response.storeInfos[i].addr;
+              //콘솔에 약국이름 띄우기
+              console.log(name);
+
+              //html에 약국이름과 약국주소 띄우기
+              $("#names").append(`
+                <li class = "place">
+                <h1 class="placename">${name}</h1>
+                <p class ="placeaddr">${addr}</p>
+                </li>
+                `);
+            }
+          }
+        }
+        });
+      }
+
+      $.ajax({
+        type: "GET",
+        url:
+          "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/stores/json",
+        data: {
+          page: 1,
+          perPage: 600
+        },
+        success: function(response) {
+          let size = response.totalPages;
+          console.log(size);
+          $("#buttons").html("");
+          for (let i = 0; i < size; i++) {
+            $("#buttons").append(
+              `<button class="b" onclick="loadpage(${i +1})"> ${i + 1} </button>`
+            );
+          }
+        }
+      });
+
+     
+    </script>
+  </body>
+</html>

@@ -86,6 +86,8 @@ undefined
 confirm("ok?")
 false
 ///가장 자주 쓰는 형태. 가지구 있자
+
+
 function show_gus(index){
     for (let i = 0; i < mise.length; i++) {
         if (mise[i]['IDEX_MVL'] < index) {
@@ -95,3 +97,87 @@ function show_gus(index){
         }
     }
 }
+
+
+jQuery:
+첫번째기능: html문서를 조작하기 쉬운 기능들을 제공해줌.
+예시
+
+$("h")[0].hide() 이러면 h태그의 첫번째 요소를 찾아서 숨김
+
+
+두번째 기능
+: aJax라는 비동기 통신 기능을 제공함.
+
+
+console.log("안녕!")
+
+  $("#abox").hide();
+
+  let opened = false;
+
+
+  function onOpenBox() {
+    if (opened ==false) {
+    $("#boxbutton").html("포스팅 박스 닫기");
+    $("#abox").show();
+    opened = true;
+    } 
+    
+    else {
+    $("#boxbutton").html("포스팅 박스 열기");
+    $("#abox").hide();
+    opened = false;
+    }
+  }
+  
+
+  //////////////////////
+
+
+  $.ajax()
+
+{
+  url:서버주소
+  method: 방식
+  data: 데이터
+  success: 완료되면 뭐할건지
+}
+
+
+즉,
+$.ajax(
+{
+  url:"https://naver.com"
+  method: "get"
+  data: {}
+  success: function (서버에서준 자료가 변수에 담김) {수행할 명령들}
+}
+)
+이러한 형태.
+
+method방식 get과 post
+1.get: 서버에서 값을 얻어오는 것
+2.post: 서버에다 값을 집어넣는 것.
+
+get을 사용할 때는 값을 얻어올거니까 data에 {} 빈 것으로 요청
+post를 사용할 때는 값을 넣을 거니까 data에 {서버에 줄 데이터} 넣어서 요청
+
+
+
+ip로 컴퓨터를 찾아내고
+port로 서비스를 찾아냄.  어떤 정보를 받을 건지
+
+네이버 아이피
+210.89.160.88
+
+포트의 범위는 0~2의 16승
+
+ex>
+210.89.160.88:80
+여기서 :80번이 http포트
+
+포트번호도 일정한 약속을 통해 정해짐.
+
+127.0.0.1 -> 내 컴퓨터로.
+도메인은 localhost
