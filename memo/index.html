@@ -96,9 +96,9 @@
 
             <button type="button" class="btn btn-primary">기사저장</button>
       
-    
+           
     </div>
-
+    <div id="card_contents" class="card-columns"></div>
       <div class="card-columns">
         <div class="card">
           <img
@@ -211,29 +211,75 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
     
 
 
 <!-- 우리가 만드는 script-->
 <script>
- console.log("안녕!")
+$(document).ready(function() {
+        $("#input_form").hide();
+        load_contents();
+      });
 
-$("#abox").hide();
+      function load_contents() {
+        $.ajax({
+          type: "GET",
+          url: "http://spartacodingclub.shop/post",
+          data: {},
+          success: function(response) {
+            $("#card_contents").html("");
 
+            let articles = response["articles"];
+            for (let i = 0; i < articles.length; i++) {
+              let card = make_card(articles[i]);
+              $("#card_contents").append(card);
+            }
+          }
+        });
+      }
+
+      function make_card(article) {
+        let html = `
+        <div class="card">
+          <img
+            src="${article.image}"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">${article.title}</h5>
+            <p class="card-text">
+              ${article.desc}
+            </p>
+            <p class="myComment">
+              ${article.comment}
+            </p>
+          </div>
+        </div>
+              `;
+        return html;
+      }
+
+
+//포스팅박스 토글 js
 let opened = false;
 
 
 function onOpenBox() {
-  if (opened ==false) {
-  $("#boxbutton").html("포스팅 박스 닫기");
+  if (opened !=false) {
   $("#abox").show();
-  opened = true;
+  $("#boxbutton").html("포스팅 박스 닫기");
+  
+  
   } 
   
   else {
   $("#boxbutton").html("포스팅 박스 열기");
   $("#abox").hide();
-  opened = false;
+  opened = true;
   }
 }
   
