@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!--google font link href-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Gaegu|Gugi|Yeon+Sung&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      body {
+        background-color: rgb(243, 231, 219);
+        font-family: "Gaegu", cursive;
+      }
+
+      div.img {
+        width: 700px;
+        margin: 50px auto;
+        text-align: center;
+        border: 5px solid rgb(145, 168, 208);
+        padding: 20px;
+        margin-bottom: 50px;
+        border-radius: 10px;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 100px;
+        display: inline;
+      }
+
+      .namePrice {
+        text-align: center;
+      }
+
+      .price {
+        font-size: 60px;
+      }
+
+      .detail {
+        text-align: left;
+        font-family: "Gugi", cursive;
+        font-size: 30px;
+        width: 800px;
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      form {
+        text-align: left;
+        font-size: 30px;
+        width: 900px;
+        margin: 100px auto;
+        border: 3px solid rgb(247, 120, 107);
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      #carouselExampleControls {
+        width: 700px;
+        height: 300px;
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      h2 {
+        text-align: center;
+        color: chocolate;
+      }
+
+      .payment {
+        text-align: center;
+      }
+      span.order {
+        color: rebeccapurple;
+        font-family: "Yeon Sung", cursive;
+        font-size: 40px;
+        border: 3px solid royalblue;
+        border-radius: 10px;
+        padding: 30px;
+        margin: 10px auto;
+      }
+      .submitButton {
+        text-align: center;
+      }
+    </style>
+
+    <title>숙제1</title>
+  </head>
+  <body>
+    <div class="img">
+      <img
+        src="http://blogfiles.naver.net/20091124_259/happynara09_1259042097416LHMrB_gif/download_happynara09.gif"
+      />
+    </div>
+
+    <div class="namePrice">
+      <h1 class="name">제품명: 와인</h1>
+      <span class="price">/가격: 30000원</span>
+    </div>
+
+    <div class="detail">
+      <p>: 맛있는 와인입니다</p>
+      <p>
+        포도주(葡萄酒, wine)는 가장 오래된 술이다. 바카스 주신(酒神)이 우리
+        인류에게 포도주 양조를 가르쳐 주었다고 하나 이는 신화(神話)에 불과하다.
+        아르메니아, 그루지아 등 흑해 연안에선 1만 년 전부터 포도주를 마셨다고
+        한다. 한편 기독교에서는 최후의 만찬을 계기로 종교적으로 불가분의 음료가
+        되었다.
+      </p>
+    </div>
+
+    <hr />
+
+    <h2><상세 이미지></h2>
+    <!--캐러셀-->
+    <div
+      id="carouselExampleControls"
+      class="carousel slide"
+      data-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="http://imgnews.naver.net/image/016/2010/01/15/201001150118.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="http://post.phinf.naver.net/20160923_149/1474597029609FwXDz_JPEG/IUq1J74tNL6mdFyGpyaBFC3dQD20.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="http://post.phinf.naver.net/20160923_174/1474597029600zaTpz_JPEG/IA7TahU0fgX9UoonnLfLq4Los8S4.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
+      </div>
+      <a
+        class="carousel-control-prev"
+        href="#carouselExampleControls"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#carouselExampleControls"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+    <hr />
+
+    <br />
+    <br />
+
+    <div class="payment">
+      <span class="order">
+        <주문란>
+      </span>
+    </div>
+
+    <form>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">주문자 성함</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputname"
+          placeholder="성함을 입력하세요"
+          value="홍길동"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">수량</label>
+        <input
+          type="number"
+          class="form-control"
+          id="count"
+          placeholder="수량을 입력하세요"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">이메일주소</label>
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          placeholder="주소를 입력하세요"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">전화번호</label>
+        <input
+          type="number"
+          class="form-control"
+          id="phonenumber"
+          placeholder="전화번호를 입력하세요 (-없이)"
+          maxlength="11"
+        />
+      </div>
+
+      <div class="submitButton">
+        <button type="button" class="btn btn-primary" onclick="on_order()">
+          주문하기
+        </button>
+      </div>
+    </form>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      function on_order() {
+        let name = $("#inputname").val();
+
+        if (name == "") {
+          alert("이름을 입력하세요");
+          $("#inputname").focus();
+          return
+
+
+        }
+
+        let count = $("#count").val();
+        if (count < 1) {
+          alert("수량을 선택하세요");
+          $("#count").focus();
+          return
+
+        }
+        let address = $("#address").val();
+        if (address == "") {
+          alert("주소를 입력하세요");
+          $("#address").focus();
+          return
+        }
+
+        let phonenumber = $("#phonenumber").val();
+        if (phonenumber == "") {
+          alert("전화번호를 입력하세요");
+          $("#phonenumber").focus();
+          return
+        }
+
+      }
+    </script>
+  </body>
+</html>
