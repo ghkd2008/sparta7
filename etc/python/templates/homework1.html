@@ -20,6 +20,109 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script type = "text/JavaScript">
+      function make_order() {
+        let name = $("#name").val();
+        let count = $("#count").val();
+        let email = $("#email").val();
+        let phone = $("#phone").val();
+
+        if (name == "") {
+          alert("이름을 입력하세요");
+          $("#name").focus();
+          return
+        }
+        else if (count < 1) {
+          alert("수량을 선택하세요");
+          $("#count").focus();
+          return
+        }
+        else if (email == "") {
+          alert("주소를 입력하세요");
+          $("#email").focus();
+          return
+        }
+        else if (phone == "") {
+          alert("전화번호를 입력하세요");
+          $("#phone").focus();
+          return
+        }
+        $.ajax({
+                    type: "POST",
+                    url: "/orders",
+                    data: { name_give: name, count_give: count, email_give: email, phone_give : phone },
+                    success: function (response) {
+                        if (response['result'] == 'success') {
+                            alert(response['msg']);
+                            $('#name').val();
+                            $('#count').val();
+                            $('#email').val();
+                            $('#phone').val();
+                            window.location.reload();
+                        }
+                    },
+                    error:function(request,status,error){
+             alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+          }
+
+                })
+
+      }
+
+      $(document).ready(function () {
+                $('#orders-box').html('');
+                listing();
+            });
+
+            function listing() {
+                $.ajax({
+                    type: "GET",
+                    url: "/orders",
+                    data: {},
+                    success: function (response) {
+                        if (response['result'] == 'success') {
+                            let orders = response['orders'];
+                            for (let i = 0; i < orders.length; i++) {
+                                make_card(orders[i]['name'], orders[i]['count'], orders[i]['email'],orders[i]['phone']);
+                            }
+                        } else {
+                            alert('주문을 받아오지 못했습니다');
+                        }
+                    }
+                })
+            }
+    
+            function make_card(name, count, email, phone) {
+                let temp_html = '<tr>\
+                                    <td>'+ name.replace(name[1],'*') + '</td>\
+                                    <td>'+ count + '</td>\
+                                    <td>'+ email + '</td>\
+                                    <td>'+ phone + '</td>\
+                                </tr>';
+                $('#orders-box').append(temp_html);
+            }
+
+
+//핸드폰 번호 글자수 제한 함수
+            function numberMaxLength(e){
+        if(e.value.length > e.maxLength){
+            e.value = e.value.slice(0, e.maxLength);
+        }
+    }
+
+      
+    </script>
+    
 
     <style>
       body {
@@ -100,7 +203,7 @@
       }
     </style>
 
-    <title>숙제1</title>
+    <title>맛있는 와인 쇼핑몰</title>
   </head>
   <body>
     <div class="img">
@@ -194,7 +297,7 @@
         <input
           type="text"
           class="form-control"
-          id="inputname"
+          id="name"
           placeholder="성함을 입력하세요"
           value="홍길동"
         />
@@ -215,8 +318,9 @@
         <input
           type="text"
           class="form-control"
-          id="address"
-          placeholder="주소를 입력하세요"
+          id="email"
+          placeholder="이메일주소를 입력하세요"
+
         />
       </div>
 
@@ -225,71 +329,39 @@
         <input
           type="number"
           class="form-control"
-          id="phonenumber"
+          id="phone"
           placeholder="전화번호를 입력하세요 (-없이)"
           maxlength="11"
+          oninput="numberMaxLength(this);"
         />
       </div>
 
       <div class="submitButton">
-        <button type="button" class="btn btn-primary" onclick="on_order()">
+        <button type="button" class="btn btn-primary" onclick="make_order()">
           주문하기
         </button>
       </div>
     </form>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
-
-    <script>
-      function on_order() {
-        let name = $("#inputname").val();
-
-        if (name == "") {
-          alert("이름을 입력하세요");
-          $("#inputname").focus();
-          return
-
-
-        }
-
-        let count = $("#count").val();
-        if (count < 1) {
-          alert("수량을 선택하세요");
-          $("#count").focus();
-          return
-
-        }
-        let address = $("#address").val();
-        if (address == "") {
-          alert("주소를 입력하세요");
-          $("#address").focus();
-          return
-        }
-
-        let phonenumber = $("#phonenumber").val();
-        if (phonenumber == "") {
-          alert("전화번호를 입력하세요");
-          $("#phonenumber").focus();
-          return
-        }
-
-      }
-    </script>
+    <div class="orders">
+      <table class="table">
+          <thead>
+              <tr>
+                  <th class="meta_info" scope="col">주문자 성함</th>
+                  <th class="meta_info" scope="col">주문수량</th>
+                  <th class="meta_info" scope="col">주문자 이메일</th>
+                  <th class="meta_info" scope="col">주문자 연락처</th>
+              </tr>
+          </thead>
+          <tbody id="orders-box">
+              <tr>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                  <td>@mdo</td>
+                  <td>@mdo</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+   
   </body>
 </html>
