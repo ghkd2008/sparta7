@@ -45,7 +45,7 @@ def runServer():
 
     #GET 방식
     @server.route('/movies', methods = ['GET']) #GET이 디폴트값. 따라서 안써도 무방.
-    def movies():
+    def read_movies():
         title_found =[]
         rank_found= []
 
@@ -89,7 +89,7 @@ def runServer():
             result = {"message": "parameter is not filled", "result": "error"}
             return jsonify(result)
 
-        movie = {'rank': int(rank), 'title': title, 'score': score}
+        movie = {'rank': rank, 'title': title, 'score': score}
         write_movie(movie)
 
         result = {'message': 'OK!', 'result':'success'}

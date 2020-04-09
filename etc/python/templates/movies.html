@@ -2,7 +2,7 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <title>JQuery 연습하고 가기!</title>
+    <title>영화차트 만들기</title>
     <!-- JQuery를 import 합니다 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -41,7 +41,7 @@
             for (i = 0; i < size; i++) {
               let rank = response[i].rank;
               let title = response[i].title;
-              let score = response[i].score;
+              let score = response[i].star;
 
               let html = `
               <tr>
@@ -108,7 +108,11 @@
             <td>평점</td>
           </tr>
         </thead>
-        <tbody id="names-q1"></tbody>
+        <tbody id="names-q1">
+            <td>a</td>
+            <td>a</td>
+            <td>a</td>
+        </tbody>
       </table>
     </div>
   </body>
